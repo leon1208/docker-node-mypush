@@ -1,0 +1,5 @@
+docker build -t 'node-push' .
+docker run -d \
+    --name node-push \
+    -p 8888:8888 \
+    node-push:latest

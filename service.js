@@ -1,24 +1,74 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var apn = require('./apn');
+var mychat = require('./mychat');
+var guessit = require('./guessit');
 var app = express();
 
 
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//测试根目录
 app.get('/', function (req, res) {
-  res.send('Hi Docker');
+  res.status(200).send('Hi Docker');
 });
 
+//guessit and mychat
+app.get('/wechat/sample/push.jsp', function (req, res) {
+  var method = req.query.method;
+  var token = req.query.token;
+  var realToken = req.query.realToken;
+  var msg = req.query.msg;
+
+  res.set({'content-type': 'text/html;charset=UTF-8'});
+
+  if ("reg" == method) {
+		mychat.registrateDeviceToken(token, realToken);
+		res.status(200).send("OK");
+	} else if ("send" == method) {
+		mychat.sendMsg(token, msg);
+		res.status(200).send("OK");
+	} else if ("receive" == method) {
+		msg = mychat.receiveMsg(token);
+    res.status(200).send(msg);
+	} else if ("view" == method) {
+		msg = mychat.viewQueue();
+		res.status(200).send(msg);
+	} else if ("clear" == method) {
+		msg = mychat.clearQueue();
+		res.status(200).send(msg);
+	} else if ("cache" == method) {
+		msg = mychat.viewMsgs(token);
+		res.status(200).send(msg);
+	} else if ("count" == method) {
+    msg = mychat.viewMsgCount(token);
+		res.status(200).send(msg);
+	} else if ("read" == method) {
+    msg = mychat.isMsgRead(token)
+		res.status(200).send(msg);
+	} else if ("init" == method) {
+		guessit.initDigitalNumber(token);
+		res.status(200).send("OK");
+	} else if ("guess" == method) {
+    msg = guessit.guessDigitalNumber(token, msg);
+    res.status(200).send(msg);
+	} else {
+    console.log(method+token+realToken+msg);
+    res.status(200).send("OK");
+  }
+});
+
+//转发短信
 app.post('/pushmsg', function (req, res) {
   console.log(req.body);
   var msg = "来自:" + req.body.from + "\n" + req.body.msg;
-  console.log(msg);
   apn.pushMsg(msg);
-  res.send('OK');
+  res.status(200).send("OK");
 });
 
+
+//启动应用
 var server = app.listen(8888, function () {
   //var host = server.address().address;
   //var port = server.address().port;

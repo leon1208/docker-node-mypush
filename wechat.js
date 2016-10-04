@@ -50,17 +50,19 @@ exports.pushWechat = function(openid, result) {
 
 
 exports.pushSMS = function(openid, sender, content) {
+  if (!openid || !sender) return;
+
   var data = {
      "first": {
        "value":"短信来了",
        "color":"#173177"
      },
      "performance":{
-       "value":sender,
+       "value":sender.substring(0, sender.length-12).trim(),
        "color":"#173177"
      },
      "time": {
-       "value":sender.substring(sender.length-12),
+       "value":sender.substring(sender.length-11),
        "color":"#173177"
      },
      "remark":{

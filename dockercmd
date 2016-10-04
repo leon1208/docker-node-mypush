@@ -3,3 +3,8 @@ docker run -d \
     --name node-push \
     -p 8888:8888 \
     node-push:latest
+
+
+docker run -d --name node-push -p 80:8888 daocloud.io/leeon/docker-node-mypush
+docker exec -it node-push /bin/bash
+docker logs node-push

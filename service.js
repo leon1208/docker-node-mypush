@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.all('/wechat/sample/push.jsp', function (req, res) {
   var method = req.query.method;
   var token = req.body.token;
-  var realToken = req.body.realToken;
+  var realToken = req.body.token1;
   var msg = req.body.msg;
 
   res.set({'content-type': 'text/html;charset=UTF-8'});

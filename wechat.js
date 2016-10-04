@@ -47,3 +47,30 @@ exports.pushWechat = function(openid, result) {
     console.log(res);
   });
 }
+
+
+exports.pushSMS = function(openid, sender, content) {
+  var data = {
+     "first": {
+       "value":"短信来了",
+       "color":"#173177"
+     },
+     "performance":{
+       "value":sender,
+       "color":"#173177"
+     },
+     "time": {
+       "value":"已经发生",
+       "color":"#173177"
+     },
+     "remark":{
+       "value":content,
+       "color":"#173177"
+     }
+  };
+  api.sendTemplate(openid, templateId, null, data, function (err, data, res) {
+    console.log(err);
+    console.log(data);
+    console.log(res);
+  });
+}

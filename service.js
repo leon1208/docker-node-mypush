@@ -63,7 +63,16 @@ app.all('/wechat/sample/push.jsp', function (req, res) {
 app.post('/pushmsg', function (req, res) {
   console.log(req.body);
   var msg = "来自:" + req.body.from + "\n" + req.body.msg;
-  apn.pushMsg(msg);
+  try {
+    apn.pushMsg(msg);
+  } catch (e) {
+    console.error(e);
+  }
+  try {
+    wechat.pushSMS(OPENID[0], req.body.from, req.body.msg);
+  } catch (e) {
+    console.error(e);
+  }
   res.status(200).send("OK");
 });
 

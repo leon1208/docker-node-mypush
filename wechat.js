@@ -60,7 +60,7 @@ exports.pushSMS = function(openid, sender, content) {
        "color":"#173177"
      },
      "time": {
-       "value":"已经发生",
+       "value":sender.substring(sender.length-11),
        "color":"#173177"
      },
      "remark":{

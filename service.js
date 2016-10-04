@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 });
 
 //guessit and mychat
-app.get('/wechat/sample/push.jsp', function (req, res) {
+app.all('/wechat/sample/push.jsp', function (req, res) {
   var method = req.query.method;
   var token = req.query.token;
   var realToken = req.query.realToken;

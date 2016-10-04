@@ -60,7 +60,7 @@ exports.pushSMS = function(openid, sender, content) {
        "color":"#173177"
      },
      "time": {
-       "value":sender.substring(sender.length-11),
+       "value":sender.substring(sender.length-12),
        "color":"#173177"
      },
      "remark":{

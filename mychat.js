@@ -184,10 +184,8 @@ this.registrateDeviceToken(TOKEN2);
 console.log(this.viewQueue());
 
 //启动定时执行
-var rule = new schedule.RecurrenceRule();
-rule.hour = 18;
-rule.minute = 0;
-schedule.scheduleJob(rule, function(){
+var j = schedule.scheduleJob('0 18 * * *', function(){
+  console.log('The answer to life, the universe, and everything!');
   this.sendMsg(TOKEN1, ALERT_MSG1);
   this.sendMsg(TOKEN2, ALERT_MSG1);
 });

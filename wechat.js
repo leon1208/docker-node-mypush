@@ -3,6 +3,7 @@ var fs = require("fs");
 let templateId = 'pe4G6xS4ZYjUViGetMR75KW10CHpLVDFSebKc-n74tw';
 let appId = 'wx3de2742296b5b267';
 let appSecret = 'a351088ffbcf0500b7390a9a792888c2';
+let myOpenId = 'o0dZUv0gdwqOa2osmkONzaAyuXiE';
 
 var api = new WechatAPI(appId, appSecret, function (callback) {
   // 传入一个获取全局token的方法
@@ -49,8 +50,8 @@ exports.pushWechat = function(openid, result) {
 }
 
 
-exports.pushSMS = function(openid, sender, content) {
-  if (!openid || !sender) return;
+exports.pushSMS = function(sender, content) {
+  if (!sender) return;
 
   var data = {
      "first": {
@@ -70,7 +71,7 @@ exports.pushSMS = function(openid, sender, content) {
        "color":"#173177"
      }
   };
-  api.sendTemplate(openid, templateId, null, data, function (err, data, res) {
+  api.sendTemplate(myOpenId, templateId, null, data, function (err, data, res) {
     console.log(err);
     console.log(data);
     console.log(res);

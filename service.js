@@ -6,6 +6,7 @@ var mychat = require('./mychat');
 var guessit = require('./guessit');
 var app = express();
 
+process.env.TZ = 'Asia/Shanghai';
 
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -70,7 +71,7 @@ app.post('/pushmsg', function (req, res) {
     console.error(e);
   }
   try {
-    wechat.pushSMS('o0dZUv0gdwqOa2osmkONzaAyuXiE', req.body.from, req.body.msg);
+    wechat.pushSMS(req.body.from, req.body.msg);
   } catch (e) {
     console.error(e);
   }

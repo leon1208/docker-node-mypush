@@ -1,4 +1,5 @@
 var apn = require('apn');
+let myDeviceToken = 'd4e5aafb98d0ba217e392f2d44b8d8091ae45224660d3aab035377626ba291bf'; //长度为64的设备Token
 
 var options = {
   "production": false,
@@ -18,8 +19,7 @@ exports.pushMsg = function(msg) {
   note.alert = msg;
   //note.payload = {'messageFrom': '13916918807'};
 
-  var deviceToken = 'd4e5aafb98d0ba217e392f2d44b8d8091ae45224660d3aab035377626ba291bf'; //长度为64的设备Token
-  apnProvider.send(note, deviceToken).then((result) => {
+  apnProvider.send(note, myDeviceToken).then((result) => {
     console.log(result);
   });
 }

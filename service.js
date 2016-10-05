@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var apn = require('./apn');
+var wechat = require('./wechat');
 var mychat = require('./mychat');
 var guessit = require('./guessit');
 var app = express();
@@ -69,7 +70,7 @@ app.post('/pushmsg', function (req, res) {
     console.error(e);
   }
   try {
-    wechat.pushSMS(OPENID[0], req.body.from, req.body.msg);
+    wechat.pushSMS('o0dZUv0gdwqOa2osmkONzaAyuXiE', req.body.from, req.body.msg);
   } catch (e) {
     console.error(e);
   }

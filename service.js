@@ -83,8 +83,7 @@ app.post('/pushmsg', function (req, res) {
 //不知道该怎么改时区
 var j = schedule.scheduleJob('0 10 * * *', function(){
   console.log('The answer to life, the universe, and everything!');
-  wechat.sendMsg(TOKEN1, ALERT_MSG1);
-  wechat.sendMsg(TOKEN2, ALERT_MSG1);
+  mychat.sendAlterMsg();
 });
 
 

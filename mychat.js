@@ -135,6 +135,12 @@ exports.clearQueue = function() {
   return this.viewQueue();
 }
 
+//发送提醒消息
+exports.sendAlterMsg = function() {
+  wechat.sendMsg(TOKEN1, ALERT_MSG1);
+  wechat.sendMsg(TOKEN2, ALERT_MSG1);
+}
+
 //当前时间
 function formatCurrentTime() {
   return moment().utc().utcOffset(8).format("MM-DD HH:mm")

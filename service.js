@@ -4,6 +4,7 @@ var apn = require('./apn');
 var wechat = require('./wechat');
 var mychat = require('./mychat');
 var guessit = require('./guessit');
+var schedule = require("node-schedule");
 var app = express();
 
 process.env.TZ = 'Asia/Shanghai';
@@ -76,6 +77,14 @@ app.post('/pushmsg', function (req, res) {
     console.error(e);
   }
   res.status(200).send("OK");
+});
+
+//启动定时执行
+//不知道该怎么改时区
+var j = schedule.scheduleJob('0 10 * * *', function(){
+  console.log('The answer to life, the universe, and everything!');
+  wechat.sendMsg(TOKEN1, ALERT_MSG1);
+  wechat.sendMsg(TOKEN2, ALERT_MSG1);
 });
 
 

@@ -1,5 +1,4 @@
 var moment = require('moment');
-var schedule = require("node-schedule");
 var apn = require('./apn');
 var wechat = require('./wechat');
 
@@ -182,13 +181,6 @@ function pushNotificationMsg(token, badge) {
 this.registrateDeviceToken(TOKEN1);
 this.registrateDeviceToken(TOKEN2);
 console.log(this.viewQueue());
-
-//启动定时执行
-var j = schedule.scheduleJob('0 18 * * *', function(){
-  console.log('The answer to life, the universe, and everything!');
-  this.sendMsg(TOKEN1, ALERT_MSG1);
-  this.sendMsg(TOKEN2, ALERT_MSG1);
-});
 
 
 /**

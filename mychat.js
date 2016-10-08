@@ -186,6 +186,7 @@ function pushNotificationMsg(token, badge) {
 //初始化注册
 this.registrateDeviceToken(TOKEN1);
 this.registrateDeviceToken(TOKEN2);
+this.sendAlterMsg();
 console.log(this.viewQueue());
 
 

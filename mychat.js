@@ -137,8 +137,8 @@ exports.clearQueue = function() {
 
 //发送提醒消息
 exports.sendAlterMsg = function() {
-  wechat.sendMsg(TOKEN1, ALERT_MSG1);
-  wechat.sendMsg(TOKEN2, ALERT_MSG1);
+  this.sendMsg(TOKEN1, ALERT_MSG1);
+  this.sendMsg(TOKEN2, ALERT_MSG1);
 }
 
 //当前时间

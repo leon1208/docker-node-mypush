@@ -36,3 +36,7 @@ exports.pushNotification = function(token, badge, msg) {
     console.log(result);
   });
 }
+
+//以下为测试代码
+//this.pushNotification(myDeviceToken,1,'')
+//this.pushMsg('')

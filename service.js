@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var apn = require('./apn');
+//var apn = require('./apn');
 var wechat = require('./wechat');
 var mychat = require('./mychat');
 var guessit = require('./guessit');
@@ -67,7 +67,7 @@ app.post('/pushmsg', function (req, res) {
   console.log(req.body);
   var msg = "来自:" + req.body.from + "\n" + req.body.msg;
   try {
-    apn.pushMsg(msg);
+    //apn.pushMsg(msg);
   } catch (e) {
     console.error(e);
   }

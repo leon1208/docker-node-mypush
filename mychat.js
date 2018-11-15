@@ -1,5 +1,5 @@
 var moment = require('moment');
-//var apn = require('./apn');
+var apn = require('./apn');
 var wechat = require('./wechat');
 
 let TOKEN1 = "297a3f20ae8fddff6a460313f53235aab3b3a6b7bc0f7a5ea9aa399bc1c50df2"; //ME
@@ -176,7 +176,7 @@ function pushWechatMsg(token, badge) {
 function pushNotificationMsg(token, badge) {
   try {
     if (TOKEN_MAP[token]) {
-      //apn.pushNotification(TOKEN_MAP[token], badge, null);
+      apn.pushNotification(TOKEN_MAP[token], badge, null);
     }
   } catch (e) {
     console.error(e);

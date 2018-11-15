@@ -1,5 +1,5 @@
 var apn = require('apn');
-let myDeviceToken = 'd4e5aafb98d0ba217e392f2d44b8d8091ae45224660d3aab035377626ba291bf'; //长度为64的设备Token
+let myDeviceToken = '574973cc6894f09fe241c41e09337664cf61fd1b6123bff9ce2eff7acbaa017b'; //长度为64的设备Token
 
 var options = {
   "production": false,

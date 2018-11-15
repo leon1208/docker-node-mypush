@@ -177,6 +177,8 @@ function pushNotificationMsg(token, badge) {
   try {
     if (TOKEN_MAP[token]) {
       apn.pushNotification(TOKEN_MAP[token], badge, null);
+    } else {
+      console.log('send apn failed cause not token_map for:'+token)
     }
   } catch (e) {
     console.error(e);
@@ -192,6 +194,9 @@ console.log(this.viewQueue());
 
 /**
 //下为测试代码
+//注册apn推送token
+console.log("注册apntoken测试...");
+this.registrateDeviceToken(TOKEN1, '574973cc6894f09fe241c41e09337664cf61fd1b6123bff9ce2eff7acbaa017b')
 console.log(TOKEN_MAP);
 console.log("发消息测试...");
 //token1放入消息

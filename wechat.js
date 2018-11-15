@@ -43,9 +43,9 @@ exports.pushWechat = function(openid, result) {
      }
   };
   api.sendTemplate(openid, templateId, null, data, function (err, data, res) {
-    console.log(err);
-    console.log(data);
-    console.log(res);
+    if (err) console.log(err);
+    //console.log(data);
+    //console.log(res);
   });
 }
 
@@ -72,8 +72,8 @@ exports.pushSMS = function(sender, content) {
      }
   };
   api.sendTemplate(myOpenId, templateId, null, data, function (err, data, res) {
-    console.log(err);
-    console.log(data);
-    console.log(res);
+    if (err) console.log(err);
+    //console.log(data);
+    //console.log(res);
   });
 }
